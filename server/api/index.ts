@@ -1,12 +1,14 @@
 import express, { raw, Request, Response } from 'express';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { YtDlp } from 'ytdlp-nodejs';
+import cors from 'cors'
 
 const app = express();
 const ytdlp = new YtDlp();
 
 
 app.use(express.json());
+app.use(cors({ origin: "*" }))
 
 app.get('/', (_req: Request, res: Response) => {
   res.json({ message: 'Hello from Express + Vercel!' });
